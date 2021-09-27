@@ -1,8 +1,8 @@
-
 var y; 
 var accel; 
 var velocity; 
 var mass; 
+var jumper;
 
 
 function setup() {
@@ -10,7 +10,7 @@ function setup() {
   
   y = 0;  
   velocity = 0; 
-  mass = 100; 
+  mass = 30; 
   
   accel = mass * 0.1; 
 }
@@ -30,13 +30,9 @@ function draw() {
   }
 }
 
-
-function mousePressed() {
-  y = 0;  
-  velocity = 0; 
+function keyPressed() {
+    velocity = -50;
 }
-
-
 
 
 
