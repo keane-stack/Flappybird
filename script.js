@@ -1,36 +1,44 @@
-var y
-var g //gravity
-var v //velocity
-var a //acceleration
 
-class Vogel{
-constructor (y,z,v,m){
-this. y = y;
-this. gravity = g;
-this. velocity = v;
-this. mass = m;
-this. acceleration = a;
-}
-}
+var y; 
+var accel; 
+var velocity; 
+var mass; 
+
 
 function setup() {
-createCanvas(500, 500);
-x = 30;
-y = 250;
-a += gravity;
-gravity = 0.9;
+  createCanvas(640, 360);
+  
+  y = 0;  
+  velocity = 0; 
+  mass = 100; 
+  
+  accel = mass * 0.1; 
 }
 
-function draw(){
-  	background(225);
- ellipse(x,y,50,50);
-  x = x;
-  y = y;
-
-
-
-
+function draw() {
+  background(127);
+  fill(255,0,0);
+  
+  velocity += accel; 
+  y += velocity;
+	ellipse(width/2,y, mass,mass); 
+  
+  if (y > height - mass/2) {
+    // A little dampening when hitting the bottom
+    velocity *= -0.6;
+    y = height - mass/2;
+  }
 }
+
+
+function mousePressed() {
+  y = 0;  
+  velocity = 0; 
+}
+
+
+
+
 
 
 
