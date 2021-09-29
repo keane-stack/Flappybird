@@ -5,13 +5,23 @@ var mass;
 var jumper;
 
 
+class Pipe {
+  constructor(x, y, h, ) {
+    this.x = x;
+    this.y = y;
+    this.h = h;
+   
+  }
+
+}
+
+
 function setup() {
   createCanvas(640, 360);
 
   y = 0;
   velocity = 0;
   mass = 30;
-
   accel = mass * 0.1;
 }
 
@@ -19,6 +29,16 @@ function draw() {
   background(127);
   fill(255, 0, 0);
 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
   velocity += accel;
   y += velocity;
   ellipse(width / 2, y, mass, mass);
