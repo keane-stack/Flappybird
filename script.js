@@ -2,34 +2,53 @@ var vogel;
 var pipes;
 
 
-
 class Vogel {
   constructor() {
-    this.x = x;
-    this.y = y;
-    this.h = h;
-    this.w = w;
-    this.velocity = 0;
-    this.acceleration = 0.9;
-    this.gravity = 0.9;
+this.y = height/2;
+  this.x = 64;
+
+  this.gravity = 0.7;
+  this.lift = -12;
+  this.velocity = 0;
+
+  this.show = function() {
+    fill(255);
+    ellipse(this.x, this.y, 32, 32);
   }
+
+  this.up = function() {
+    this.velocity += this.lift;
+  }
+
+  this.update = function() {
+    this.velocity += this.gravity;
+    // this.velocity *= 0.9;
+    this.y += this.velocity;
+
+    if (this.y > height) {
+      this.y = height;
+      this.velocity = 0;
+    }
+
+    if (this.y < 0) {
+      this.y = 0;
+      this.velocity = 0;
+    }
+
+  }
+
+}
 }
 
 function setup() {
   createCanvas(640, 360);
-
-  y = 0;
-  velocity = 0;
-  mass = 30;
-  accel = mass * 0.1;
+  vogel = new Vogel();
 }
 
 function draw() {
-  background(127);
-  fill(255, 0, 0);
-
-
- 
+  background(1);
+  bird.update();
+  bird.show();
 }
 
 function keyPressed() {
