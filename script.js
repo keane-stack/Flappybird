@@ -1,20 +1,19 @@
-var y;
-var accel;
-var velocity;
-var mass;
-var jumper;
+var vogel;
+var pipes;
 
 
-class Pipe {
-  constructor(x, y, h, ) {
+
+class Vogel {
+  constructor() {
     this.x = x;
     this.y = y;
     this.h = h;
-   
+    this.w = w;
+    this.velocity = 0;
+    this.acceleration = 0.9;
+    this.gravity = 0.9;
   }
-
 }
-
 
 function setup() {
   createCanvas(640, 360);
@@ -29,25 +28,8 @@ function draw() {
   background(127);
   fill(255, 0, 0);
 
- 
- 
- 
- 
- 
- 
- 
- 
- 
- 
-  velocity += accel;
-  y += velocity;
-  ellipse(width / 2, y, mass, mass);
 
-  if (y > height - mass / 2) {
-    // A little dampening when hitting the bottom
-    velocity *= -0.6;
-    y = height - mass / 2;
-  }
+ 
 }
 
 function keyPressed() {
