@@ -22,7 +22,7 @@ class Bird {
     this.w = 25;
     this.h = 25;
     this.velocity = 0;
-    this.accel = 0.9;
+    this.accel = 0.8;
   }
 
   draw() {
@@ -50,8 +50,14 @@ function draw() {
 
   // Voor elke zoveel frames, één buis.
   if (frameCount % 80 == 0) {
-    buizen.push(new Buis(width, 0, 100));
-    buizen.push(new Buis(width, 300, 100));
+    let holeSize = 100;
+    let holeY = random(10, 350 - holeSize);
+
+    // Plafond
+    buizen.push(new Buis(width, 0, holeY));
+
+    // Grond
+    buizen.push(new Buis(width, holeY + holeSize, height));
   }
 
   bird.draw();
@@ -65,7 +71,7 @@ function draw() {
 }
 
 function keyPressed() {
-  bird.velocity = -15;
+  bird.velocity = -13;
 }
 
 
