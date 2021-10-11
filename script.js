@@ -3,15 +3,19 @@ var velocity;
 var mass;
 var jumper;
 
+var bird;
+
 
 class Pipe {
-  constructor(x, y, h, ) {
+  constructor(x, y, h) {
     this.x = x;
     this.y = y;
     this.h = h;
-
   }
 
+  draw() {
+    
+  }
 }
 
 class Bird {
@@ -21,42 +25,37 @@ class Bird {
     this.w = 25;
     this.h = 25;
     this.velocity = 0;
-    this.mass = 30;
-    this.accel = mass * 0.1;
+    this.accel = 0.9;
   }
 
   draw() {
-    rect(this.x, this.y, this.w, this.h)
-    this.velocity += accel;
-    this.y += velocity;
-    ellipse(width / 2, y, mass, mass);
+    ellipse(this.x, this.y, this.w, this.h);
 
-    if (y > height - mass / 2) {
-      // A little dampening when hitting the bottom
-      this.velocity *= -0.6;
-      this.y = height - mass / 2;
+    this.velocity += this.accel;
+    this.y += this.velocity;
+    
+    if (this.y > height) {
+      this.y = height;
     }
   }
-
 }
 
 function setup() {
   createCanvas(640, 360);
 
-
-
+  bird = new Bird();
 }
 
 function draw() {
   background(127);
   fill(255, 0, 0);
 
+  bird.draw();
 }
 
 function keyPressed() {
-  velocity = -20;
+  bird.velocity = -15;
 }
-
 
 
 
