@@ -1,54 +1,56 @@
-var vogel;
-var pipes;
+var accel;
+var velocity;
+var mass;
+var jumper;
 
 
-class Vogel {
-  constructor() {
-this.y = height/2;
-  this.x = 64;
-
-  this.gravity = 0.7;
-  this.lift = -12;
-  this.velocity = 0;
-
-  this.show = function() {
-    fill(255);
-    ellipse(this.x, this.y, 32, 32);
-  }
-
-  this.up = function() {
-    this.velocity += this.lift;
-  }
-
-  this.update = function() {
-    this.velocity += this.gravity;
-    // this.velocity *= 0.9;
-    this.y += this.velocity;
-
-    if (this.y > height) {
-      this.y = height;
-      this.velocity = 0;
-    }
-
-    if (this.y < 0) {
-      this.y = 0;
-      this.velocity = 0;
-    }
+class Pipe {
+  constructor(x, y, h, ) {
+    this.x = x;
+    this.y = y;
+    this.h = h;
 
   }
 
 }
+
+class Bird {
+  constructor() {
+    this.x = width / 2;
+    this.y = height / 2;
+    this.w = 25;
+    this.h = 25;
+    this.velocity = 0;
+    this.mass = 30;
+    this.accel = mass * 0.1;
+  }
+
+  draw() {
+    rect(this.x, this.y, this.w, this.h)
+    this.velocity += accel;
+    this.y += velocity;
+    ellipse(width / 2, y, mass, mass);
+
+    if (y > height - mass / 2) {
+      // A little dampening when hitting the bottom
+      this.velocity *= -0.6;
+      this.y = height - mass / 2;
+    }
+  }
+
 }
 
 function setup() {
   createCanvas(640, 360);
-  vogel = new Vogel();
+
+
+
 }
 
 function draw() {
-  background(1);
-  bird.update();
-  bird.show();
+  background(127);
+  fill(255, 0, 0);
+
 }
 
 function keyPressed() {
