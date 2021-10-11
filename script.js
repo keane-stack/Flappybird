@@ -50,7 +50,8 @@ function draw() {
 
   // Voor elke zoveel frames, één buis.
   if (frameCount % 80 == 0) {
-    buizen.push(new Buis(width, 100, 100));
+    buizen.push(new Buis(width, 0, 100));
+    buizen.push(new Buis(width, 300, 100));
   }
 
   bird.draw();
