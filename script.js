@@ -1,5 +1,7 @@
 var bird;
 var buizen;
+var bg, bird_img;
+
 
 class Buis {
   constructor(x, y, h) {
@@ -26,15 +28,20 @@ class Bird {
   }
 
   draw() {
-    ellipse(this.x, this.y, this.w, this.h);
+    image(birb_bg, this.x, this.y, this.w, this.h);
 
     this.velocity += this.accel;
     this.y += this.velocity;
-    
+
     if (this.y > height) {
       this.y = height;
     }
   }
+}
+
+function preload() {
+  bg = loadImage('bg.png');
+  birb_bg = loadImage ('bird.png')
 }
 
 function setup() {
@@ -45,8 +52,7 @@ function setup() {
 }
 
 function draw() {
-  background(127);
-  fill(255, 0, 0);
+  image(bg, 0, 0, width, height);
 
   // Voor elke zoveel frames, één buis.
   if (frameCount % 80 == 0) {
@@ -63,8 +69,7 @@ function draw() {
   bird.draw();
 
   // Gaat door elke buis in de buizen lijst.
-  buizen.forEach(buis =>
-  {
+  buizen.forEach(buis => {
     // Tekent deze buis.
     buis.draw();
   });
