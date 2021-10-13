@@ -21,8 +21,8 @@ class Bird {
   constructor() {
     this.x = width / 2;
     this.y = height / 2;
-    this.w = 25;
-    this.h = 25;
+    this.w = 50;
+    this.h = 50;
     this.velocity = 0;
     this.accel = 0.8;
   }
