@@ -8,12 +8,13 @@ class Buis {
     this.x = x;
     this.y = y;
     this.h = h;
-    this.w = 30;
+    this.w = 50;
   }
 
   draw() {
     rect(this.x, this.y, this.w, this.h);
     this.x -= 4;
+    fill('yellow')
   }
 }
 
@@ -21,10 +22,10 @@ class Bird {
   constructor() {
     this.x = width / 2;
     this.y = height / 2;
-    this.w = 50;
-    this.h = 50;
+    this.w = 40;
+    this.h = 40;
     this.velocity = 0;
-    this.accel = 0.8;
+    this.accel = 0.9;
   }
 
   draw() {
@@ -34,7 +35,7 @@ class Bird {
     this.y += this.velocity;
 
     if (this.y > height) {
-      this.y = height;
+      this.y = 330;
     }
   }
 }
