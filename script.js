@@ -27,12 +27,13 @@ class Buis {
 
         this.c = "red";
       }
-      else {
-        this.c = "yellow";
-      }
+    }
+    else {
+      this.c = "yellow";
     }
   }
 }
+
 class Bird {
   constructor() {
     this.x = width / 2;
