@@ -55,7 +55,7 @@ class Bird {
     if (this.y > height) {
       //this.y = 330;
       gameState = 2;
-      backgroundSong.stop();
+      
 
     }
   }
@@ -65,7 +65,7 @@ function preload() {
   bg = loadImage('plaatjes/bg.png');
   birb_bg = loadImage('plaatjes/bird.png');
   jumpSound = loadSound('sounds/jumpSound.mp3');
-  backgroundSong = loadSound('sounds/backgroundsong.mp3')
+  backgroundSong = loadSound('sounds/interstellar.mp3')
 
 }
 
@@ -104,7 +104,6 @@ function keyPressed() {
   }
   else if (gameState == 1) {
     if (keyCode === 32) {
-//      jumpSound.play();
     }
   }
   else if (gameState == 2) {
@@ -120,7 +119,7 @@ function keyPressed() {
   }
 }
 
-}
+
 function startMenu() {
   textSize(50);
   textAlign(CENTER);
