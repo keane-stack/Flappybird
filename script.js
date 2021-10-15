@@ -22,8 +22,8 @@ class Buis {
   checkCollision() {
     if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
       if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
-
-
+        
+        gameState = 2;
 
         this.c = "red";
       }
@@ -51,7 +51,8 @@ class Bird {
     this.y += this.velocity;
 
     if (this.y > height) {
-      this.y = 330;
+      //this.y = 330;
+      gameState = 2;
     }
   }
 }
@@ -99,9 +100,11 @@ function keyPressed() {
   }
   else if (gameState == 2) {
     if (keyCode === 32) {
-      rects.length = 0;
-      gameState = 1;
+      buizen.length = 0;
       score = 0;
+      bird.y = height / 2;
+      
+      gameState = 1;
     }
   }
 }
