@@ -1,7 +1,7 @@
 var bird;
 var buizen;
 var bg, bird_img;
-
+var gameState = 0;
 
 class Buis {
   constructor(x, y, h) {
@@ -71,6 +71,46 @@ function setup() {
 function draw() {
   image(bg, 0, 0, width, height);
 
+  if (gameState == 0) {
+    startMenu();
+  }
+  else if (gameState == 1) {
+    game();
+
+  }
+  else if (gameState == 2) {
+    gameOver();   
+  }
+}
+
+function keyPressed() {
+  bird.velocity = -9;
+
+  if (gameState == 0) {
+    if (keyCode === 32) {
+      gameState = 1;
+    }
+  }
+  else if (gameState == 1) {
+    if (keyCode === 32) {
+      bird.velocity = -5;
+//      jumpSound.play();
+    }
+  }
+  else if (gameState == 2) {
+    if (keyCode === 32) {
+      rects.length = 0;
+      gameState = 1;
+      score = 0;
+    }
+  }
+}
+
+function startMenu() {
+
+}
+
+function game() {
   // Voor elke zoveel frames, één buis.
   if (frameCount % 80 == 0) {
     let holeSize = 100;
@@ -81,6 +121,7 @@ function draw() {
 
     // Grond
     buizen.push(new Buis(width, holeY + holeSize, height));
+
   }
 
   bird.draw();
@@ -93,8 +134,6 @@ function draw() {
   });
 }
 
-function keyPressed() {
-  bird.velocity = -9;
+function gameOver() {
+
 }
-
-
