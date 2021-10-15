@@ -22,7 +22,7 @@ class Buis {
   checkCollision() {
     if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
       if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
-        
+
         gameState = 2;
 
         this.c = "red";
@@ -93,7 +93,7 @@ function keyPressed() {
   }
   else if (gameState == 1) {
     if (keyCode === 32) {
-//      jumpSound.play();
+      //      jumpSound.play();
     }
   }
   else if (gameState == 2) {
@@ -141,5 +141,12 @@ function game() {
 }
 
 function gameOver() {
+  textSize(50);
+  textAlign(CENTER);
+  fill("white");
+  text("GAME OVER", width / 2, height / 4);
 
+  textSize(20);
+  text("Press [SPACE] to play again", width / 2, height / 5 * 4);
+}
 }
