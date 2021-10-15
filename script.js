@@ -2,6 +2,7 @@ var bird;
 var buizen;
 var bg, bird_img;
 var gameState = 0;
+var score = 0;
 
 class Buis {
   constructor(x, y, h) {
@@ -16,13 +17,12 @@ class Buis {
     fill(this.c);
     rect(this.x, this.y, this.w, this.h);
     this.x -= 4;
-
   }
 
   checkCollision() {
     if (bird.x + bird.w > this.x && bird.x < this.x + this.w) {
       if (bird.y + bird.h > this.y && bird.y < this.y + this.h) {
-
+        
         gameState = 2;
 
         this.c = "red";
@@ -84,7 +84,7 @@ function draw() {
 }
 
 function keyPressed() {
-  bird.velocity = -9;
+  bird.velocity = -7;//-9
 
   if (gameState == 0) {
     if (keyCode === 32) {
@@ -93,7 +93,7 @@ function keyPressed() {
   }
   else if (gameState == 1) {
     if (keyCode === 32) {
-      //      jumpSound.play();
+//      jumpSound.play();
     }
   }
   else if (gameState == 2) {
@@ -110,8 +110,8 @@ function keyPressed() {
 function startMenu() {
   textSize(50);
   textAlign(CENTER);
-  fill("white");
-  text("Flappy Bird", width / 2, height / 2);
+  fill("geel");
+  text("Flappy Bird", width / 2, height / 4);
 
   textSize(20);
   text("Press [SPACE] to play", width / 2, height / 5 * 4);
@@ -137,16 +137,23 @@ function game() {
     // Tekent deze buis.
     buis.draw();
     buis.checkCollision();
+
+    if (abs(bird.x - buis.x) < bird.w) {
+      score += 1/34;
+    }
   });
+
+  text("Score: " + round(score), 50, 50);
 }
 
 function gameOver() {
-  textSize(50);
+ textSize(50);
   textAlign(CENTER);
   fill("white");
   text("GAME OVER", width / 2, height / 4);
 
   textSize(20);
   text("Press [SPACE] to play again", width / 2, height / 5 * 4);
-}
+
+  text("Score: " + round(score), 50, 50);
 }
