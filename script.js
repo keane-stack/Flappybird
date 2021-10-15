@@ -3,6 +3,8 @@ var buizen;
 var bg, bird_img;
 var gameState = 0;
 var score = 0;
+var jumpSound;
+
 
 class Buis {
   constructor(x, y, h) {
@@ -53,13 +55,18 @@ class Bird {
     if (this.y > height) {
       //this.y = 330;
       gameState = 2;
+      backgroundSong.stop();
+
     }
   }
 }
 
 function preload() {
-  bg = loadImage('bg.png');
-  birb_bg = loadImage('bird.png')
+  bg = loadImage('plaatjes/bg.png');
+  birb_bg = loadImage('plaatjes/bird.png');
+  jumpSound = loadSound('sounds/jumpSound.mp3');
+  backgroundSong = loadSound('sounds/backgroundsong.mp3')
+
 }
 
 function setup() {
@@ -85,10 +92,14 @@ function draw() {
 
 function keyPressed() {
   bird.velocity = -7;//-9
+    jumpSound.play();
+
 
   if (gameState == 0) {
     if (keyCode === 32) {
       gameState = 1;
+      backgroundSong.play();
+
     }
   }
   else if (gameState == 1) {
@@ -101,12 +112,15 @@ function keyPressed() {
       buizen.length = 0;
       score = 0;
       bird.y = height / 2;
+      backgroundSong.play();
+
 
       gameState = 1;
     }
   }
 }
 
+}
 function startMenu() {
   textSize(50);
   textAlign(CENTER);
