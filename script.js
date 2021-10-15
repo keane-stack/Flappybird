@@ -38,8 +38,8 @@ class Bird {
   constructor() {
     this.x = width / 2;
     this.y = height / 2;
-    this.w = 40;
-    this.h = 40;
+    this.w = 35;
+    this.h = 35;
     this.velocity = 0;
     this.accel = 0.5;
   }
@@ -77,10 +77,9 @@ function draw() {
   }
   else if (gameState == 1) {
     game();
-
   }
   else if (gameState == 2) {
-    gameOver();   
+    gameOver();
   }
 }
 
@@ -94,7 +93,6 @@ function keyPressed() {
   }
   else if (gameState == 1) {
     if (keyCode === 32) {
-      bird.velocity = -5;
 //      jumpSound.play();
     }
   }
@@ -103,14 +101,20 @@ function keyPressed() {
       buizen.length = 0;
       score = 0;
       bird.y = height / 2;
-      
+
       gameState = 1;
     }
   }
 }
 
 function startMenu() {
+  textSize(50);
+  textAlign(CENTER);
+  fill("white");
+  text("Flappy Bird", width / 2, height / 2);
 
+  textSize(20);
+  text("Press [SPACE] to play", width / 2, height / 5 * 4);
 }
 
 function game() {
@@ -124,7 +128,6 @@ function game() {
 
     // Grond
     buizen.push(new Buis(width, holeY + holeSize, height));
-
   }
 
   bird.draw();
